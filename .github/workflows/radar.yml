@@ -22,8 +22,10 @@ jobs:
       - run: python3 .github/scripts/radar.py README.md
       - name: Commit if changed
         run: |
-          git diff --quiet README.md && exit 0
+          # Stage the banners with the README, or a new week's SVGs never commit.
+          git add README.md assets
+          git diff --cached --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: refresh this week's radar picks" README.md
+          git commit -m "chore: refresh this week's radar picks"
           git push
