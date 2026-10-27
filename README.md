@@ -29,6 +29,11 @@ production rather than in a notebook.
 
 *perchling's five moods, one per Claude Code state: idle, running, waiting, done, error.*
 
+## This week on GitHub Radar
+
+<!-- radar:start -->
+<!-- radar:end -->
+
 ## How I work
 
 - **Verified means seen working.** Tests are the floor; a change is done when
