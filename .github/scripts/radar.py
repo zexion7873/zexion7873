@@ -66,11 +66,10 @@ def banner(week: str, theme: str) -> str:
 def render(data: dict) -> str:
     label = date.fromisoformat(data["week"]).strftime("%b %-d, %Y")
     lines = [
-        # 600 matches the perchling GIF above it, which is 600px wide natively.
-        f'<p align="center"><a href="{SITE}/trending"><picture>'
+        f'<a href="{SITE}/trending"><picture>'
         f'<source media="(prefers-color-scheme: dark)" srcset="{BANNERS["dark"]}">'
-        f'<img src="{BANNERS["light"]}" width="600" alt="GitHub Radar, week of {label}: the top three trending repos">'
-        "</picture></a></p>",
+        f'<img src="{BANNERS["light"]}" width="100%" alt="GitHub Radar, week of {label}: the top three trending repos">'
+        "</picture></a>",
         "",
         "Picked, summarized and roasted by scheduled agents, with no one in the loop."
         " Summaries and takes are their own words, in Traditional Chinese, unedited."
