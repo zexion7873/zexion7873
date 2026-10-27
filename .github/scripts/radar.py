@@ -15,6 +15,10 @@ from datetime import date
 SITE = os.environ.get("RADAR_URL", "https://whyisthistrending.vercel.app")
 START, END = "<!-- radar:start -->", "<!-- radar:end -->"
 BANNERS = {"light": "assets/radar-light.svg", "dark": "assets/radar-dark.svg"}
+METER = "assets/meter-{}.svg"
+METER_W, METER_H = 120, 14
+# The site's MOMENTUM_HOT (github-radar-ui docs/signals.md): only acceleration gets a label.
+HOT = 1.5
 
 # The site's Broadsheet tokens (github-radar-ui app/globals.css), light and dark.
 PALETTE = {
@@ -36,6 +40,36 @@ MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 def clean(s: str) -> str:
     # Escaping `<` keeps agent-written text from ever forging the END marker.
     return html.escape(" ".join(s.split()), quote=False)
+
+
+def baseline(r: dict) -> float | None:
+    # The mean of the repo's prior weeks, recovered from momentum = stars / baseline.
+    return r["starsPerWeek"] / r["momentum"] if r["starsPerWeek"] and r["momentum"] else None
+
+
+def meter_full(repos: list[dict]) -> float:
+    # A baseline above this week's #1 must still land on the bar, so it can set full too.
+    return max((v for r in repos for v in (r["starsPerWeek"], baseline(r)) if v), default=1)
+
+
+def meter(r: dict, full: float) -> str:
+    # One file for both themes: no text, a transparent background, and colours legible on either.
+    fill = round(METER_W * r["starsPerWeek"] / full)
+    parts = [
+        f'<rect y="3" width="{METER_W}" height="8" rx="4" fill="#888" fill-opacity="0.25"/>',
+        f'<rect y="3" width="{fill}" height="8" rx="4" fill="#c65a35"/>',
+    ]
+    b = baseline(r)
+    if b:
+        x = min(max(round(METER_W * b / full) - 1, 0), METER_W - 2)
+        body = "#fff" if x + 2 <= fill else "#8a8a8a"
+        parts += [
+            f'<rect x="{x}" width="2" height="3" fill="#8a8a8a"/>',
+            f'<rect x="{x}" y="3" width="2" height="8" fill="{body}"/>',
+            f'<rect x="{x}" y="11" width="2" height="3" fill="#8a8a8a"/>',
+        ]
+    body = "\n".join(parts)
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="{METER_W}" height="{METER_H}" viewBox="0 0 {METER_W} {METER_H}">\n{body}\n</svg>\n'
 
 
 def banner(week: str, theme: str) -> str:
@@ -78,8 +112,17 @@ def render(data: dict) -> str:
     ]
     for i, r in enumerate(data["repos"], 1):
         link = r["link"] or f"https://github.com/{r['repo']}"
-        # No-break spaces keep the pill on one line on a phone.
-        stars = f" · `★ {r['starsPerWeek']:,} / wk`" if r["starsPerWeek"] else ""
+        stars = ""
+        if r["starsPerWeek"]:
+            m = r["momentum"]
+            alt = f"{r['starsPerWeek']:,} stars this week" + (f", {m:.1f}x its average" if m else "")
+            # No-break spaces keep the pill on one line on a phone.
+            stars = (
+                f' · <img src="{METER.format(i)}" width="{METER_W}" height="{METER_H}" alt="{alt}">'
+                f" `★ {r['starsPerWeek']:,} / wk`"
+            )
+            if m and m >= HOT:
+                stars += f" · ×{m:.1f} vs its avg"
         lines += [
             f"{i}. **[{clean(r['repo'])}]({link})**{stars}<br>",
             f"   {clean(r['summary'])}",
@@ -96,6 +139,8 @@ def main() -> None:
         data = json.load(res)  # a 503 raises HTTPError, so the README is never blanked
     if not data["repos"]:
         sys.exit("radar returned no repos")
+    # Before any write: a route without `momentum` raises KeyError here and leaves every file alone.
+    full = meter_full(data["repos"])
 
     with open(path, encoding="utf-8") as f:
         readme = f.read()
@@ -108,6 +153,10 @@ def main() -> None:
     for theme, rel in BANNERS.items():
         with open(os.path.join(root, rel), "w", encoding="utf-8") as f:
             f.write(banner(data["week"], theme))
+    for i, r in enumerate(data["repos"], 1):
+        if r["starsPerWeek"]:
+            with open(os.path.join(root, METER.format(i)), "w", encoding="utf-8") as f:
+                f.write(meter(r, full))
     block = f"{START}\n{render(data)}\n{END}"
     with open(path, "w", encoding="utf-8") as f:
         f.write(pattern.sub(lambda _: block, readme, count=1))
