@@ -25,6 +25,10 @@ production rather than in a notebook.
 | [usage-band](https://github.com/zexion7873/usage-band) | Context fill and rate-limit windows, always on above the Claude Code prompt | Claude Code plugin · TypeScript |
 | [perchling](https://github.com/zexion7873/perchling) | A native desktop pet that reacts to what Claude Code is doing | Swift · macOS |
 
+<a href="https://github.com/zexion7873/perchling"><img src="https://raw.githubusercontent.com/zexion7873/perchling/main/docs/moods.gif" width="480" alt="perchling, a small husky in blue goggles, in its five moods: idle, running at a laptop, waiting, done with a grin, and error with a red cross through each eye."></a>
+
+*perchling's five moods, one per Claude Code state: idle, running, waiting, done, error.*
+
 ## How I work
 
 - **Verified means seen working.** Tests are the floor; a change is done when
