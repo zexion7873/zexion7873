@@ -30,7 +30,6 @@ MARK = """<rect width="32" height="32" fill="#1a1714"/>
 <circle cx="14.9" cy="12.4" r="1.4" fill="#d4643f"/>"""
 
 SERIF = "Georgia, 'Times New Roman', serif"
-SANS = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
 
@@ -44,22 +43,22 @@ def banner(week: str, theme: str) -> str:
     c = PALETTE[theme]
     label = date.fromisoformat(week).strftime("%b %-d, %Y")
     arcs = "\n".join(
-        f'<circle cx="960" cy="200" r="{r}" fill="none" stroke="{c["accent"]}" stroke-opacity="{o}" stroke-width="2"/>'
-        for r, o in ((90, 0.55), (150, 0.35), (210, 0.2), (270, 0.1))
+        f'<circle cx="720" cy="170" r="{r}" fill="none" stroke="{c["accent"]}" stroke-opacity="{o}" stroke-width="2"/>'
+        for r, o in ((70, 0.55), (115, 0.35), (160, 0.2), (205, 0.1))
     )
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="960" height="160" viewBox="0 0 960 160">
-<defs><clipPath id="card"><rect x="1" y="1" width="958" height="158" rx="12"/></clipPath></defs>
-<rect x="1" y="1" width="958" height="158" rx="12" fill="{c["bg"]}" stroke="{c["border"]}" stroke-width="2"/>
+    # The <img> scales to the column, so on a phone every size here shrinks ~2.3x.
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="720" height="140" viewBox="0 0 720 140">
+<defs><clipPath id="card"><rect x="1" y="1" width="718" height="138" rx="12"/></clipPath></defs>
+<rect x="1" y="1" width="718" height="138" rx="12" fill="{c["bg"]}" stroke="{c["border"]}" stroke-width="2"/>
 <g clip-path="url(#card)">
 {arcs}
-<circle cx="880" cy="128" r="6" fill="{c["accent"]}"/>
+<circle cx="660" cy="114" r="6" fill="{c["accent"]}"/>
 </g>
-<g transform="translate(32 32) scale(3)">
+<g transform="translate(26 26) scale(2.75)">
 {MARK}
 </g>
-<text x="156" y="54" font-family="{MONO}" font-size="14" letter-spacing="2" fill="{c["accent"]}">GITHUB RADAR  /  WEEKLY TOP 3</text>
-<text x="156" y="98" font-family="{SERIF}" font-size="36" fill="{c["fg"]}">Week of {label}</text>
-<text x="156" y="128" font-family="{SANS}" font-size="16" fill="{c["muted"]}">Picked, summarized and roasted by scheduled agents. No one in the loop.</text>
+<text x="138" y="56" font-family="{MONO}" font-size="20" letter-spacing="2" fill="{c["accent"]}">WEEKLY TOP 3</text>
+<text x="138" y="104" font-family="{SERIF}" font-size="44" fill="{c["fg"]}">Week of {label}</text>
 </svg>
 """
 
@@ -72,13 +71,15 @@ def render(data: dict) -> str:
         f'<img src="{BANNERS["light"]}" width="100%" alt="GitHub Radar, week of {label}: the top three trending repos">'
         "</picture></a>",
         "",
-        "Summaries and takes are the agents' own words, in Traditional Chinese, unedited."
+        "Picked, summarized and roasted by scheduled agents, with no one in the loop."
+        " Summaries and takes are their own words, in Traditional Chinese, unedited."
         f" [Full chart →]({SITE}/trending)",
         "",
     ]
     for i, r in enumerate(data["repos"], 1):
         link = r["link"] or f"https://github.com/{r['repo']}"
-        stars = f" · `★ {r['starsPerWeek']:,} / wk`" if r["starsPerWeek"] else ""
+        # No-break spaces keep the pill on one line on a phone.
+        stars = f" · `★ {r['starsPerWeek']:,} / wk`" if r["starsPerWeek"] else ""
         lines += [
             f"{i}. **[{clean(r['repo'])}]({link})**{stars}<br>",
             f"   {clean(r['summary'])}",

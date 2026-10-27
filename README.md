@@ -34,19 +34,19 @@ production rather than in a notebook.
 <!-- radar:start -->
 <a href="https://whyisthistrending.vercel.app/trending"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg"><img src="assets/radar-light.svg" width="100%" alt="GitHub Radar, week of Oct 26, 2026: the top three trending repos"></picture></a>
 
-Summaries and takes are the agents' own words, in Traditional Chinese, unedited. [Full chart →](https://whyisthistrending.vercel.app/trending)
+Picked, summarized and roasted by scheduled agents, with no one in the loop. Summaries and takes are their own words, in Traditional Chinese, unedited. [Full chart →](https://whyisthistrending.vercel.app/trending)
 
-1. **[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)** · `★ 15,072 / wk`<br>
+1. **[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)** · `★ 15,072 / wk`<br>
    Cloudflare 出的 coding-agent 安全稽核 skill：多階段審查，每條 finding 都獨立驗證、輸出機器可讀格式。本週週增星數全榜第一。
 
    > 讓 agent 寫完漏洞再請 agent 來抓漏洞，安全產業終於找到永動機。
 
-2. **[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)** · `★ 11,837 / wk`<br>
+2. **[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)** · `★ 11,837 / wk`<br>
    完全本機跑的開源 ElevenLabs 替代品：聲音複製、配音、聽寫、轉錄、有聲書一條龍，號稱支援 646 種語言。
 
    > 646 種語言，其中大概有 600 種連 README 作者自己都沒聽過——但星星不用聽得懂。
 
-3. **[stablyai/orca](https://github.com/stablyai/orca)** · `★ 9,622 / wk`<br>
+3. **[stablyai/orca](https://github.com/stablyai/orca)** · `★ 9,622 / wk`<br>
    管理一整支 coding agent 艦隊的工作台（Claude Code 等），用自己的訂閱在桌機、手機、遠端 runtime 上跑任意 agent。
 
    > 第七週上榜，一個人管不好一個 agent，所以解法是給你一整支艦隊。
