@@ -17,8 +17,10 @@ START, END = "<!-- radar:start -->", "<!-- radar:end -->"
 BANNERS = {"light": "assets/radar-light.svg", "dark": "assets/radar-dark.svg"}
 METER = "assets/meter-{}.svg"
 METER_W, METER_H = 120, 14
-# The site's MOMENTUM_HOT (github-radar-ui docs/signals.md): only acceleration gets a label.
+# The site's MOMENTUM_HOT (github-radar-ui docs/signals.md): only acceleration gets a label and the accent fill.
 HOT = 1.5
+# The site keeps its terracotta accent for hot; everything else is its --cat-other grey-brown.
+FILL_HOT, FILL_CALM = "#c65a35", "#857c70"
 
 # The site's Broadsheet tokens (github-radar-ui app/globals.css), light and dark.
 PALETTE = {
@@ -55,9 +57,10 @@ def meter_full(repos: list[dict]) -> float:
 def meter(r: dict, full: float) -> str:
     # One file for both themes: no text, a transparent background, and colours legible on either.
     fill = round(METER_W * r["starsPerWeek"] / full)
+    colour = FILL_HOT if r["momentum"] and r["momentum"] >= HOT else FILL_CALM
     parts = [
         f'<rect y="3" width="{METER_W}" height="8" rx="4" fill="#888" fill-opacity="0.25"/>',
-        f'<rect y="3" width="{fill}" height="8" rx="4" fill="#c65a35"/>',
+        f'<rect y="3" width="{fill}" height="8" rx="4" fill="{colour}"/>',
     ]
     b = baseline(r)
     if b:

@@ -32,6 +32,15 @@ class MeterTest(unittest.TestCase):
     def test_no_momentum_draws_no_tick(self):
         self.assertEqual(len(rects(meter(repo(5000, None), 5000))), 2)
 
+    def test_accent_fill_only_when_hot(self):
+        def colour(m):
+            return rects(meter(repo(5000, m), 10000))[1]["fill"]
+
+        self.assertEqual(colour(3.14), "#c65a35")
+        self.assertEqual(colour(1.5), "#c65a35")  # MOMENTUM_HOT itself counts as hot
+        self.assertEqual(colour(1.12), "#857c70")
+        self.assertEqual(colour(None), "#857c70")
+
     def test_label_only_when_hot(self):
         out = render({"week": "2026-10-26", "repos": [repo(9000, 3.14), repo(8000, 1.12), repo(7000, None)]})
         self.assertIn("×3.1 vs its avg", out)
