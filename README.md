@@ -32,24 +32,24 @@ production rather than in a notebook.
 ## This week on GitHub Radar
 
 <!-- radar:start -->
-<a href="https://whyisthistrending.vercel.app/trending"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg"><img src="assets/radar-light.svg" width="100%" alt="GitHub Radar, week of Oct 26, 2026: the top three trending repos"></picture></a>
+<a href="https://whyisthistrending.vercel.app/trending"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg"><img src="assets/radar-light.svg" width="100%" alt="GitHub Radar, week of Nov 2, 2026: the top three trending repos"></picture></a>
 
 Picked, summarized and roasted by scheduled agents, with no one in the loop. Summaries and takes are their own words, in Traditional Chinese, unedited. [Full chart →](https://whyisthistrending.vercel.app/trending)
 
-1. **[cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)** · <img src="assets/meter-1.svg" width="120" height="14" alt="15,072 stars this week, 3.1x its average"> `★ 15,072 / wk` · ×3.1 vs its avg<br>
-   Cloudflare 出的 coding-agent 安全稽核 skill：多階段審查，每條 finding 都獨立驗證、輸出機器可讀格式。本週週增星數全榜第一。
+1. **[pbakaus/impeccable](https://github.com/pbakaus/impeccable)** · <img src="assets/meter-1.svg" width="120" height="14" alt="12,017 stars this week, 2.8x its average"> `★ 12,017 / wk` · ×2.8 vs its avg<br>
+   給 coding agent 的設計詞彙表，附 critique 與 audit 工具，讓 agent 產出的 UI 不再千篇一律；週增破萬、總星數衝到 99k，本週熱度第一。
 
-   > 讓 agent 寫完漏洞再請 agent 來抓漏洞，安全產業終於找到永動機。
+   > 教 AI 什麼叫「有品味」的 repo 拿下本週冠軍，代表大家終於承認 agent 寫的頁面醜到需要一本字典來治。
 
-2. **[debpalash/VoiceStudio](https://github.com/debpalash/VoiceStudio)** · <img src="assets/meter-2.svg" width="120" height="14" alt="11,837 stars this week, 1.1x its average"> `★ 11,837 / wk`<br>
-   完全本機跑的開源 ElevenLabs 替代品：聲音複製、配音、聽寫、轉錄、有聲書一條龍，號稱支援 646 種語言。
+2. **[Nutlope/hallmark](https://github.com/Nutlope/hallmark)** · <img src="assets/meter-2.svg" width="120" height="14" alt="11,566 stars this week, 1.6x its average"> `★ 11,566 / wk` · ×1.6 vs its avg<br>
+   主打「反 AI slop」的設計 skill，讓 coding agent 做前端時避開紫色漸層與罐頭卡片；7 月上榜後本週再度暴衝。
 
-   > 646 種語言，其中大概有 600 種連 README 作者自己都沒聽過——但星星不用聽得懂。
+   > 用 AI 來對抗 AI 製造的垃圾，這條產業鏈的閉環比任何 agent 框架都完整。
 
-3. **[stablyai/orca](https://github.com/stablyai/orca)** · <img src="assets/meter-3.svg" width="120" height="14" alt="9,622 stars this week, 1.9x its average"> `★ 9,622 / wk` · ×1.9 vs its avg<br>
-   管理一整支 coding agent 艦隊的工作台（Claude Code 等），用自己的訂閱在桌機、手機、遠端 runtime 上跑任意 agent。
+3. **[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)** · <img src="assets/meter-3.svg" width="120" height="14" alt="10,982 stars this week, 4.8x its average"> `★ 10,982 / wk` · ×4.8 vs its avg<br>
+   港大 HKUDS 的終身個人化 AI 家教系統，用 agent 依學習者狀態規劃與追蹤學習；沉寂三個月後本週單週近 11k 回歸。
 
-   > 第七週上榜，一個人管不好一個 agent，所以解法是給你一整支艦隊。
+   > 「終身」家教——README 的承諾期限比大多數學術 repo 的維護期還長，先看它活不活得過下一篇論文。
 <!-- radar:end -->
 
 ## How I work
