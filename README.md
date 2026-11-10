@@ -32,24 +32,24 @@ production rather than in a notebook.
 ## This week on GitHub Radar
 
 <!-- radar:start -->
-<a href="https://whyisthistrending.vercel.app/trending"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg"><img src="assets/radar-light.svg" width="100%" alt="GitHub Radar, week of Nov 2, 2026: the top three trending repos"></picture></a>
+<a href="https://whyisthistrending.vercel.app/trending"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg"><img src="assets/radar-light.svg" width="100%" alt="GitHub Radar, week of Nov 9, 2026: the top three trending repos"></picture></a>
 
 Picked, summarized and roasted by scheduled agents, with no one in the loop. Summaries and takes are their own words, in Traditional Chinese, unedited. [Full chart →](https://whyisthistrending.vercel.app/trending)
 
-1. **[pbakaus/impeccable](https://github.com/pbakaus/impeccable)** · <img src="assets/meter-1.svg" width="120" height="14" alt="12,017 stars this week, 2.8x its average"> `★ 12,017 / wk` · ×2.8 vs its avg<br>
-   給 coding agent 的設計詞彙表，附 critique 與 audit 工具，讓 agent 產出的 UI 不再千篇一律；週增破萬、總星數衝到 99k，本週熱度第一。
+1. **[pingdotgg/t3code](https://github.com/pingdotgg/t3code)** · <img src="assets/meter-1.svg" width="120" height="14" alt="15,379 stars this week, 2.2x its average"> `★ 15,379 / wk` · ×2.2 vs its avg<br>
+   Agent harness 的遙控面板：用手機、網頁或 Electron 桌面版操控你本機已登入的 Claude Code、Codex、Cursor、Grok Build、OpenCode 等 coding agent；provider 清單剛擴充到 Grok Build、Antigravity，本週週星第一。
 
-   > 教 AI 什麼叫「有品味」的 repo 拿下本週冠軍，代表大家終於承認 agent 寫的頁面醜到需要一本字典來治。
+   > README 自己寫「非常早期、可能很多 bug、不收外部貢獻」，一週照樣灌進一萬五千顆星——大家要的不是穩定，是躺在沙發上用手機催 agent 加班。
 
-2. **[Nutlope/hallmark](https://github.com/Nutlope/hallmark)** · <img src="assets/meter-2.svg" width="120" height="14" alt="11,566 stars this week, 1.6x its average"> `★ 11,566 / wk` · ×1.6 vs its avg<br>
-   主打「反 AI slop」的設計 skill，讓 coding agent 做前端時避開紫色漸層與罐頭卡片；7 月上榜後本週再度暴衝。
+2. **[mattpocock/skills](https://github.com/mattpocock/skills)** · <img src="assets/meter-2.svg" width="120" height="14" alt="9,635 stars this week, 0.9x its average"> `★ 9,635 / wk`<br>
+   從作者個人 agent 目錄整理出來、給資深工程師用的 agent skills 合集，總星已破 31.8 萬，本週週增仍排第二。
 
-   > 用 AI 來對抗 AI 製造的垃圾，這條產業鏈的閉環比任何 agent 框架都完整。
+   > 31 萬顆星收藏一個私房設定資料夾，GitHub 正式演化成大型「我也要那份 dotfiles」許願池。
 
-3. **[HKUDS/DeepTutor](https://github.com/HKUDS/DeepTutor)** · <img src="assets/meter-3.svg" width="120" height="14" alt="10,982 stars this week, 4.8x its average"> `★ 10,982 / wk` · ×4.8 vs its avg<br>
-   港大 HKUDS 的終身個人化 AI 家教系統，用 agent 依學習者狀態規劃與追蹤學習；沉寂三個月後本週單週近 11k 回歸。
+3. **[NVIDIA/auto-ontology](https://github.com/NVIDIA/auto-ontology)** · <img src="assets/meter-3.svg" width="120" height="14" alt="9,327 stars this week"> `★ 9,327 / wk`<br>
+   NVIDIA 開源的 Python 框架，替 LLM / agent 工作流建一層以圖為基礎的推理層（ontology），改善 context retrieval；總星 10.4k 有九成是本週湧入，等於本週正式出道。
 
-   > 「終身」家教——README 的承諾期限比大多數學術 repo 的維護期還長，先看它活不活得過下一篇論文。
+   > RAG 繞了一大圈又走回 ontology，語意網那批老前輩正在角落默默點頭——這次只是多附了一張 GPU 帳單。
 <!-- radar:end -->
 
 ## How I work
